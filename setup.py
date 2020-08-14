@@ -52,7 +52,7 @@ The script will show you when to move so you can just relax. \n > """)
         for i in range(9):
             inv_y.append(y)
         pyautogui.write("etMove", interval=0.1)
-        pyautogui.press("enter")
+        pyautogui.press("esc")
         pyautogui.write("e")
         time.sleep(3)
 
@@ -60,7 +60,7 @@ The script will show you when to move so you can just relax. \n > """)
         x, y = pyautogui.position()
         inv_x.append(x)
         pyautogui.write("etMove", interval=0.1)
-        pyautogui.press("enter")
+        pyautogui.press("esc")
         pyautogui.write("e")
         time.sleep(3)
 
