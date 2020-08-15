@@ -17,19 +17,27 @@ def specific_mc_action(inv):
     #    time.sleep(0.25)
 
     on = True
-    fslot = 18
-    lslot = fslot + 2
+    slot = 18
+
     while on:
         pyautogui.write("e")
         pyautogui.keyDown("shift")
-
-        for i in inv[17:21]:
-            pyautogui.click(i)
-            time.sleep(1)
-
+        for i in range(2):
+            pyautogui.moveTo(inv[slot])
+            pyautogui.click(button="left")
+            slot += 1
+            if slot > 26:
+                break
         pyautogui.keyUp("shift")
+        pyautogui.write("e")
 
-        on = False
+        for i  in range(2):
+            i += 1
+            pyautogui.write(str(i))
+            pyautogui.click(button="right")
+
+        if slot > 26:
+            break
 
 def main():
     inv = get_data()
