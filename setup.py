@@ -51,18 +51,25 @@ The script will show you when to move so you can just relax. \n > """)
         x, y = pyautogui.position()
         for i in range(9):
             inv_y.append(y)
+        print("Move")
         pyautogui.write("etMove", interval=0.1)
         pyautogui.press("esc")
         pyautogui.write("e")
         time.sleep(3)
 
-    for i in range(9):
+    for i in range(8):
         x, y = pyautogui.position()
         inv_x.append(x)
+        print("Move")
         pyautogui.write("etMove", interval=0.1)
         pyautogui.press("esc")
         pyautogui.write("e")
         time.sleep(3)
+
+    x, y = pyautogui.position()
+    inv_x.append(x)
+    pyautogui.write("etOkay the scanning is finished. Bye :)")
+    pyautogui.press("esc")
 
     counter = 0
     x_counter = 0
@@ -76,10 +83,10 @@ The script will show you when to move so you can just relax. \n > """)
         if x_counter >= 9:
             x_counter = 0
 
+    print("Okay the scanning is finished. Bye :)")
+    print("If you want to redo the setup just start it again. If no Minecraft orders came that told you to move  try reseting your key-settings.")
+
     with open("data.txt", "w") as file:
         json.dump(inv, file)
-
-    print("Okay the scanning is finished. Bye :)")
-    time.sleep(1)
 
 setup()
