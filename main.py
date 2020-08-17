@@ -2,6 +2,14 @@ import pyautogui
 import time
 import simplejson as json
 
+# Bot Chain Function Dictionary
+
+functions = {
+    1: "open_close_inv()",
+    2: "rightclick_hotbar()",
+    3: "leftclick_hotbar()"
+}
+
 # Bot Chain Functions
 
 def open_close_inv():
@@ -79,11 +87,22 @@ def grab_item(start_slot, end_slot, inv):
     pyautogui.dragTo(inv[end_slot][0], inv[end_slot][1], button="left")
     pyautogui.click(button="left")
 
-# Actual Chain Function
- 
-def bot_chain(inv):
-    time.sleep(5)
-    grab_item(1, 36, inv)
+# Bot Chains
+
+def create_bot_chain():
+    bot_chain = input("Chain : ").split(", ") # ==> Will be changed in a while cause of UI ==> smarter Input
+
+    with open("bot_chain.txt", "w") as file:
+        json.dump(bot_chain, file)
+
+def read_bot_chain(bot_chain_file):
+    with open(bot_chain_file, "r") as file:
+        bot_chain = json.load(file)
+
+        for i in bot_chain:
+            print(functions[int(i)])
+
+        return bot_chain
 
 # General Functions
 
@@ -94,6 +113,8 @@ def get_data():
 
 def main():
     inv = get_data()
-    bot_chain(inv)
+    create_bot_chain()
+    chain = read_bot_chain("bot_chain.txt")
+    print(chain)
 
 main()
