@@ -1,6 +1,7 @@
 import pyautogui
 import time
 import simplejson as json
+import tkinter as tk
 
 # Bot Chain Function Dictionary
 
@@ -106,6 +107,15 @@ def read_bot_chain(bot_chain_file):
 
 # General Functions
 
+def run_UI():
+    root = tk.Tk()
+
+    label = tk.Label(root, text="hello world")
+    label.pack(padx=20, pady=20)
+
+    root.mainloop()
+
+
 def get_data():
     with open("data.txt", "r") as file:
         inv = json.load(file)
@@ -113,8 +123,6 @@ def get_data():
 
 def main():
     inv = get_data()
-    create_bot_chain()
-    chain = read_bot_chain("bot_chain.txt")
-    print(chain)
+    run_UI()
 
 main()
